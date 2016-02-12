@@ -1,2 +1,10 @@
 # ConnectionPoolHeatMapChart
 Heat Map Chart for Connection Pool
+<html>
+<body>
+	<center>
+	<iframe src="cpExample.html" border="0" height="370px" width="80%"></iframe>
+	<iframe src="cpBootStrapExample.html" border="0" height="340px" width="80%"></iframe>
+	</center>
+</body>
+</html>
