@@ -8,7 +8,7 @@ var connectionPoolStatus = {
 	totalConnections: 500,
 	activeConnections: 370,
 	idleConnections: 50,
-	waitingConnections: 30
+	waitingConnections: 10
 };
 
 // To invoke
@@ -33,9 +33,9 @@ function connectionPoolHeatMap(heatMapElementName,data){
   }
   
   var connectionPoolArray = [];
-  var openConnections = (data.totalConnections - (data.activeConnections+data.idleConnections));
-  if(openConnections<0){
-	  openConnections = 0;
+  data.openConnections = (data.totalConnections - (data.activeConnections+data.idleConnections));
+  if(data.openConnections<0){
+	  data.openConnections = 0;
   }
   // Pushing Active Connections
   for(i=0;i<data.activeConnections;i++){
@@ -50,7 +50,7 @@ function connectionPoolHeatMap(heatMapElementName,data){
 	  connectionPoolArray.push('cp-waiting');
   }
   // Pushing Open Connections
-  for(i=0;i<openConnections;i++){
+  for(i=0;i<data.openConnections;i++){
 	  connectionPoolArray.push('cp-open');
   }
   connectionPoolArray = shuffleArray(connectionPoolArray);
@@ -69,22 +69,30 @@ function connectionPoolHeatMap(heatMapElementName,data){
   legendTbl = legendTbl  + '<td class="cp-legend-active">Active ( '+data.activeConnections+' )</td>';
   legendTbl = legendTbl  + '<td class="cp-legend-idle">Idle ( '+data.idleConnections+' )</td>';
   legendTbl = legendTbl  + '<td class="cp-legend-waiting">Waiting ( '+data.waitingConnections+' )</td>';
-  legendTbl = legendTbl  + '<td class="cp-legend-open">Open ( '+openConnections+' )</td></tr>';
+  legendTbl = legendTbl  + '<td class="cp-legend-open">Open ( '+data.openConnections+' )</td></tr>';
   legendTbl = legendTbl  + '<tr><td colspan="4">'+connectionPoolStatus.name+'</td></tr>';
   legendTbl = legendTbl  + '</table>';
   $(heatMapElementName).append(legendTbl);
   
-  animate();
+  animate(data);
 };
 
 /**
  * Animate the cp td classes
  */
-function animate(){
-	$(".cp-active").effect( "pulsate", {times:5}, 4500 );
-	$(".cp-idle").effect( "pulsate", {times:5}, 5000 );
-	$(".cp-waiting").effect( "pulsate", {times:5}, 5500 );
-	$(".cp-open").effect( "highlight", {times:5}, 6000 );
+function animate(data){
+	if(data.activeConnections>0){
+		$(".cp-active").effect( "pulsate", {times:1}, 1000 );
+	}
+	if(data.idleConnections>0){
+		$(".cp-idle").effect( "pulsate", {times:1}, 1200 );
+	}
+	if(data.waitingConnections>0){
+		$(".cp-waiting").effect( "pulsate", {times:1}, 1500 );
+	}
+	if(data.openConnections>0){
+		$(".cp-open").effect( "pulsate", {times:1}, 1700 );
+	}
 }
 
 /**
