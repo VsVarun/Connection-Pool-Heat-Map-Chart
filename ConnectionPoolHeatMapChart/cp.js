@@ -57,21 +57,22 @@ function connectionPoolHeatMap(heatMapElementName,data){
   $(heatMapElementName).innerHtml='';
   $(heatMapElementName).append('<table></table>');
   var table = $(heatMapElementName).children();
+  var tableData = "";
   for(i=0;i<rows;i++){
-	  var tableData = "<tr>";
+	  tableData = tableData.concat("<tr>");
 	  for(j=0;j<columns;j++){
-		tableData = tableData +"<td class='"+connectionPoolArray.pop()+"'></td>";
+		tableData = tableData.concat("<td class='").concat(connectionPoolArray.pop()).concat("'></td>");
 	  }
-	  tableData = tableData + "</tr>"
-	  table.append(tableData);
+	  tableData = tableData.concat("</tr>");
   }
+  table.append(tableData);
   var legendTbl = '<table><tr>'
-  legendTbl = legendTbl  + '<td class="cp-legend-active">Active ( '+data.activeConnections+' )</td>';
-  legendTbl = legendTbl  + '<td class="cp-legend-idle">Idle ( '+data.idleConnections+' )</td>';
-  legendTbl = legendTbl  + '<td class="cp-legend-waiting">Waiting ( '+data.waitingConnections+' )</td>';
-  legendTbl = legendTbl  + '<td class="cp-legend-open">Open ( '+data.openConnections+' )</td></tr>';
-  legendTbl = legendTbl  + '<tr><td colspan="4">'+connectionPoolStatus.name+'</td></tr>';
-  legendTbl = legendTbl  + '</table>';
+  legendTbl = legendTbl.concat('<td class="cp-legend-active">Active ( ').concat(data.activeConnections).concat(' )</td>');
+  legendTbl = legendTbl.concat('<td class="cp-legend-idle">Idle ( ').concat(data.idleConnections).concat(' )</td>');
+  legendTbl = legendTbl.concat('<td class="cp-legend-waiting">Waiting ( ').concat(data.waitingConnections).concat(' )</td>');
+  legendTbl = legendTbl.concat('<td class="cp-legend-open">Open ( ').concat(data.openConnections).concat(' )</td></tr>');
+  legendTbl = legendTbl.concat('<tr><td colspan="4">').concat(connectionPoolStatus.name).concat('</td></tr>');
+  legendTbl = legendTbl.concat('</table>');
   $(heatMapElementName).append(legendTbl);
   
   animate(data);
