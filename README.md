@@ -1,7 +1,6 @@
 # ConnectionPoolHeatMapChart
 Heat Map Chart for Connection Pool
 
-	<center>
-	<iframe src="cpExample.html" border="0" height="370px" width="80%"></iframe>
-	<iframe src="cpBootStrapExample.html" border="0" height="340px" width="80%"></iframe>
-	</center>
+<p align="center">
+  <img src="https://github.com/VsVarun/ConnectionPoolHeatMapChart/blob/master/CPHeatMapChart.JPG?raw=true"/>
+</p>
