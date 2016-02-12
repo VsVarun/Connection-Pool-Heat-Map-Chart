@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Connection Pool Heat Map Chart : Heat Map Chart to Visualize Connection Pool Usage">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Connection Pool Heat Map Chart</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/VsVarun/ConnectionPoolHeatMapChart">View on GitHub</a>
+
+          <h1 id="project_title">Connection Pool Heat Map Chart</h1>
+          <h2 id="project_tagline">Heat Map Chart to Visualize Connection Pool Usage</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/VsVarun/ConnectionPoolHeatMapChart/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/VsVarun/ConnectionPoolHeatMapChart/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>ConnectionPoolHeatMapChart
+Heat Map Chart for Connection Pool.<br>
+This Chart will let the user to visualize how much of the connections are beings used.<br>
+The Chart plays animations when it loads.<br>
+This is very simplied by directly accepting a Connection Pool Status object.  </p>
+
+<p>:::Html:::</p>
+
+<pre><code> &lt;div id="ConnectionPoolHeatMap"&gt;&lt;/div&gt;
+</code></pre>
+
+<p>:::Javascript:::</p>
+
+<pre><code>// Sample data
+var connectionPoolStatus = {
+    name: 'com.zaxxer.hikari:type=Pool (HikariCP)',
+    totalConnections: 500,
+    activeConnections: 370,
+    idleConnections: 50,
+    waitingConnections: 30
+};
+
+// To invoke
+connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus);
+</code></pre>
+
+<p>:::Output:::</p>
+
+<p><img src="https://github.com/VsVarun/ConnectionPoolHeatMapChart/raw/master/CPHeatMapChart.JPG?raw=true" alt="Connection Pool Heat Map Chart"></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Connection Pool Heat Map Chart maintained by <a href="https://github.com/VsVarun">VsVarun</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
