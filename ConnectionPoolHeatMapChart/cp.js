@@ -81,10 +81,10 @@ function connectionPoolHeatMap(heatMapElementName,data){
  * Animate the cp td classes
  */
 function animate(){
-	$(".cp-active").effect( "pulsate", {times:5}, 4500 );
-	$(".cp-idle").effect( "pulsate", {times:5}, 5000 );
+	$(".cp-active").effect( "pulsate", {times:8}, 4500 );
+	$(".cp-idle").effect( "pulsate", {times:6}, 5000 );
 	$(".cp-waiting").effect( "pulsate", {times:5}, 5500 );
-	$(".cp-open").effect( "highlight", {times:5}, 6000 );
+	$(".cp-open").effect( "highlight", {times:4}, 6000 );
 }
 
 /**
