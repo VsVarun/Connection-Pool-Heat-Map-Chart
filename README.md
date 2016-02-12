@@ -25,3 +25,7 @@ connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus);
 <p align="center">
   <img src="https://github.com/VsVarun/ConnectionPoolHeatMapChart/blob/master/CPHeatMapChart.JPG?raw=true"/>
 </p>
+
+
+Your Valuable Suggestions are most welcome.
+Kindly add it to the issues.
