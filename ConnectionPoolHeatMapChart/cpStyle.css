@@ -3,15 +3,15 @@
  */
 table{background:#2F323C;border:2px solid #2F323C;min-width:450px;}
 table td{padding:5px;border:1px solid #2F323C;width:0.1%;text-align:center;font-weight:bold;}
-.cp-active,.cp-legend-active{
+.cp-active,.cp-legend-active,.cp-animated-active{
   background:#5FFF00;
 }
-.cp-idle,.cp-legend-idle{
+.cp-idle,.cp-legend-idle,.cp-animated-idle{
   background:#FFAB00
 }
-.cp-waiting,.cp-legend-waiting{
+.cp-waiting,.cp-legend-waiting,.cp-animated-waiting{
   background:#FC1200
 }
-.cp-open,.cp-legend-open{
+.cp-open,.cp-legend-open,.cp-animated-open{
  background:white
 } 

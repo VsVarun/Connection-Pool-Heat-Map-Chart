@@ -10,7 +10,7 @@ var connectionPoolStatus = {
 	idleConnections: 50,
 	waitingConnections: 10
 };
-*/			
+*/
 /*
  * Pass the HeatMapElementName{div name}, ConnectionPoolStatus object
  */
@@ -35,19 +35,35 @@ function connectionPoolHeatMap(heatMapElementName,data, animateFlag){
   }
   // Pushing Active Connections
   for(i=0;i<data.activeConnections;i++){
-	  connectionPoolArray.push('cp-active');
+	  if(animateFlag){
+		connectionPoolArray.push('cp-animated-active');
+	  }else{
+		connectionPoolArray.push('cp-active');
+	  }
   }
   // Pushing Idle Connections
   for(i=0;i<data.idleConnections;i++){
-	  connectionPoolArray.push('cp-idle');
+	  if(animateFlag){
+		connectionPoolArray.push('cp-animated-idle');
+	  }else{
+		connectionPoolArray.push('cp-idle');
+	  }
   }
   // Pushing Waiting Connections
   for(i=0;i<data.waitingConnections;i++){
-	  connectionPoolArray.push('cp-waiting');
+	  if(animateFlag){
+		connectionPoolArray.push('cp-animated-waiting');
+	  }else{
+		connectionPoolArray.push('cp-waiting');
+	  }
   }
   // Pushing Open Connections
   for(i=0;i<data.openConnections;i++){
-	  connectionPoolArray.push('cp-open');
+	  if(animateFlag){
+		connectionPoolArray.push('cp-animated-open');
+	  }else{
+		connectionPoolArray.push('cp-open');
+	  }
   }
   connectionPoolArray = shuffleArray(connectionPoolArray);
   $(heatMapElementName).innerHtml='';
@@ -79,17 +95,29 @@ function connectionPoolHeatMap(heatMapElementName,data, animateFlag){
  * Animate the cp td classes
  */
 function animate(data){
+	$(".cp-animated-active").effect( "pulsate", {times:3}, 3000 );
 	if(data.activeConnections>0){
-		$(".cp-active").effect( "pulsate", {times:1}, 3000 );
+		setInterval(function(){
+			$(".cp-animated-active").effect( "pulsate", {times:3}, 3000 );
+		},8000);
 	}
 	if(data.idleConnections>0){
-		$(".cp-idle").effect( "pulsate", {times:1}, 3200 );
+		$(".cp-animated-idle").effect( "pulsate", {times:2}, 3200 );
+		setInterval(function(){
+			$(".cp-animated-idle").effect( "pulsate", {times:2}, 3200 );
+		},8000);
 	}
 	if(data.waitingConnections>0){
-		$(".cp-waiting").effect( "pulsate", {times:1}, 3500 );
+		$(".cp-animated-waiting").effect( "pulsate", {times:2}, 3500 );
+		setInterval(function(){
+			$(".cp-animated-waiting").effect( "pulsate", {times:2}, 3500 );
+		},8000);
 	}
 	if(data.openConnections>0){
-		$(".cp-open").effect( "pulsate", {times:1}, 3700 );
+		$(".cp-animated-open").effect( "pulsate", {times:2}, 3500 );
+		setInterval(function(){
+			$(".cp-animated-open").effect( "pulsate", {times:2}, 3500 );
+		},8000);
 	}
 }
 

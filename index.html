@@ -1,8 +1,85 @@
-<html>
-<body>
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Connection Pool Heat Map Chart by VsVarun</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Connection Pool Heat Map Chart</h1>
+      <h2 class="project-tagline">Heat Map Chart to Visualize Connection Pool Usage</h2>
+      <a href="https://github.com/VsVarun/ConnectionPoolHeatMapChart" class="btn">View on GitHub</a>
+      <a href="https://github.com/VsVarun/ConnectionPoolHeatMapChart/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/VsVarun/ConnectionPoolHeatMapChart/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p>ConnectionPoolHeatMapChart
+Heat Map Chart for Connection Pool.<br>
+This Chart will let the user to visualize how much of the connections are beings used.<br>
+The Chart plays animations when it loads.<br>
+This is very simplied by directly accepting a Connection Pool Status object.  </p>
+
+<p>:::Html:::</p>
+
+<pre><code> &lt;div id="ConnectionPoolHeatMap"&gt;&lt;/div&gt;
+</code></pre>
+
+<p>:::Imports:::</p>
+<pre><code>
+:::StyleSheet:::  
+&ltlink rel="stylesheet" href="./ConnectionPoolHeatMapChart/cpStyle.css"&gt;
+
+:::BootStrap Libraries(Optional):::
+&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"&gt; 
+&lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"&gt; &lt;/script&gt; 
+
+:::JS Libraries:::  
+&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js">&lt;/script&gt;
+&lt;script type="text/javascript" src="./ConnectionPoolHeatMapChart/cp.js"&gt;&lt;/script&gt; 
+</code></pre>
+
+<p>:::Javascript:::</p>
+
+<pre><code>// Sample data
+var connectionPoolStatus = {
+    name: 'com.zaxxer.hikari:type=Pool (HikariCP)',
+    totalConnections: 500,
+    activeConnections: 370,
+    idleConnections: 50,
+    waitingConnections: 30
+};
+
+// To invoke with Animation
+connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true);
+
+// To invoke without Animation
+connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true);
+</code></pre>
+
+<p>:::Output:::</p>
+<p>
 	<center>
-	<iframe src="cpExample.html" border="0" height="370px" width="80%"></iframe>
-	<iframe src="cpBootStrapExample.html" border="0" height="340px" width="80%"></iframe>
+		<a href="http://vsvarun.github.io/ConnectionPoolHeatMapChart/cpExample.html" target="_blank">(ConnectionPoolHeatMapChart) -> Open In New Tab</a>
+		<iframe src="cpExample.html" border="0" height="750px" width="100%"></iframe>
+		<a href="http://vsvarun.github.io/ConnectionPoolHeatMapChart/cpBootStrapExample.html" target="_blank">(ConnectionPoolHeatMapChart with BootStrap) -> Open In New Tab</a>
+		<iframe src="cpBootStrapExample.html" border="0" height="750px" width="100%"></iframe>
 	</center>
-</body>
+</p>
+
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/VsVarun/ConnectionPoolHeatMapChart">Connection Pool Heat Map Chart</a> is maintained by <a href="https://github.com/VsVarun">VsVarun</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
 </html>
