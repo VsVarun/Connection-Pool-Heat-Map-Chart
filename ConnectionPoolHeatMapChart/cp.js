@@ -107,7 +107,7 @@ function animate(data){
 			$(".cp-animated-idle").effect( "pulsate", {times:2}, 3200 );
 		},8000);
 	}
-	if(data.waitingConnections>0){
+	if(data.Waiting>0){
 		$(".cp-animated-waiting").effect( "pulsate", {times:2}, 3500 );
 		setInterval(function(){
 			$(".cp-animated-waiting").effect( "pulsate", {times:2}, 3500 );
