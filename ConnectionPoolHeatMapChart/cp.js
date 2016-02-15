@@ -83,7 +83,7 @@ function connectionPoolHeatMap(heatMapElementName,data, animateFlag){
   legendTbl = legendTbl.concat('<td class="cp-legend-idle">Idle ( ').concat(data.idleConnections).concat(' )</td>');
   legendTbl = legendTbl.concat('<td class="cp-legend-waiting">Waiting ( ').concat(data.waitingConnections).concat(' )</td>');
   legendTbl = legendTbl.concat('<td class="cp-legend-open">Open ( ').concat(data.openConnections).concat(' )</td></tr>');
-  legendTbl = legendTbl.concat('<tr><td colspan="4">').concat(connectionPoolStatus.name).concat('</td></tr>');
+  legendTbl = legendTbl.concat('<tr><td colspan="4" class="cp-legend-name">').concat(connectionPoolStatus.name).concat('</td></tr>');
   legendTbl = legendTbl.concat('</table>');
   $(heatMapElementName).append(legendTbl);
   if(animateFlag){
