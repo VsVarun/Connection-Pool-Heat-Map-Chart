@@ -5,13 +5,21 @@ table{background:#2F323C;border:2px solid #2F323C;min-width:450px;}
 table td{padding:5px;border:1px solid #2F323C;width:0.1%;text-align:center;font-weight:bold;}
 .cp-active,.cp-legend-active,.cp-animated-active{
   background:#5FFF00;
+ color: black;
 }
 .cp-idle,.cp-legend-idle,.cp-animated-idle{
-  background:#FFAB00
+  background:#FFAB00;
+ color: black;
 }
 .cp-waiting,.cp-legend-waiting,.cp-animated-waiting{
-  background:#FC1200
+  background:#FC1200;
+ color: black;
 }
 .cp-open,.cp-legend-open,.cp-animated-open{
- background:white
+ background:white;
+ color: black;
 } 
+.cp-legend-name{
+	background:#2F323C;
+	color: #D5DFCF;
+}
