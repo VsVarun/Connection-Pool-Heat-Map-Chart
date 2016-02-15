@@ -12,13 +12,13 @@ var connectionPoolStatus = {
 };
 
 // To invoke
-connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus);
-connectionPoolHeatMap('#ConnectionPoolHeatMap1', connectionPoolStatus);
+connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, false);
+
 
 /*
  * Pass the HeatMapElementName{div name}, ConnectionPoolStatus object
  */
-function connectionPoolHeatMap(heatMapElementName,data){
+function connectionPoolHeatMap(heatMapElementName,data,animate){
   var rows=0,columns=0;
   var superTotalConnections = (data.totalConnections+data.waitingConnections);
   if(superTotalConnections >= 500){
@@ -74,8 +74,9 @@ function connectionPoolHeatMap(heatMapElementName,data){
   legendTbl = legendTbl.concat('<tr><td colspan="4">').concat(connectionPoolStatus.name).concat('</td></tr>');
   legendTbl = legendTbl.concat('</table>');
   $(heatMapElementName).append(legendTbl);
-  
-  animate(data);
+  if(animate){
+	animate(data);
+  }
 };
 
 /**
