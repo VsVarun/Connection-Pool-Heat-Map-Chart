@@ -25,11 +25,11 @@ This is very simplied by directly accepting a Connection Pool Status object.<br>
 ```
 // Sample data
 var connectionPoolStatus = {
-	name: 'com.zaxxer.hikari:type=Pool (HikariCP)',
-	totalConnections: 500,
-	activeConnections: 370,
-	idleConnections: 50,
-	waitingConnections: 30
+	Name: 'com.zaxxer.hikari:type=Pool (HikariCP)',
+	Total: 500,
+	Active: 370,
+	Idle: 50,
+	Waiting: 30
 };
 
 // To invoke with Animation
