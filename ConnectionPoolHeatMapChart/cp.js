@@ -12,7 +12,7 @@ var connectionPoolStatus = {
 };
 
 // To invoke
-connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, false);
+connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true);
 
 
 /*
