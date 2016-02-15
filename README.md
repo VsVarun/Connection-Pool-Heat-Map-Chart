@@ -32,8 +32,11 @@ var connectionPoolStatus = {
 	waitingConnections: 30
 };
 
-// To invoke
-connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus);
+// To invoke with Animation
+connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true);
+
+// To invoke without Animation
+connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, false);
 ```
 <br><b>:::Output:::</b>
 <p align="center">
