@@ -16,6 +16,8 @@
       <a href="https://github.com/VsVarun/ConnectionPoolHeatMapChart" class="btn">View on GitHub</a>
       <a href="https://github.com/VsVarun/ConnectionPoolHeatMapChart/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/VsVarun/ConnectionPoolHeatMapChart/tarball/master" class="btn">Download .tar.gz</a>
+	  <a href="./cpExample.html" target="_blank" class="btn">Demo Native theme</a>
+	  <a href="./cpBootStrapExample.html" target="_blank" class="btn">Demo Bootstrap theme</a>
     </section>
 
     <section class="main-content">
@@ -24,11 +26,12 @@ Heat Map Chart for Connection Pool.<br>
 This Chart will let the user to visualize how much of the connections are beings used.<br>
 The Chart plays animations when it loads.<br>
 This is very simplied by directly accepting a Connection Pool Status object.  </p>
+<hr>
 
 <p>:::Html:::</p>
-
 <pre><code> &lt;div id="ConnectionPoolHeatMap"&gt;&lt;/div&gt;
 </code></pre>
+<hr>
 
 <p>:::Imports:::</p>
 <pre><code>
@@ -44,9 +47,9 @@ This is very simplied by directly accepting a Connection Pool Status object.  </
 &lt;script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js">&lt;/script&gt;
 &lt;script type="text/javascript" src="./ConnectionPoolHeatMapChart/cp.js"&gt;&lt;/script&gt; 
 </code></pre>
+<hr>
 
 <p>:::Javascript:::</p>
-
 <pre><code>// Sample data
 var connectionPoolStatus = {
     name: 'com.zaxxer.hikari:type=Pool (HikariCP)',
@@ -62,18 +65,25 @@ connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true);
 // To invoke without Animation
 connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true);
 </code></pre>
+<hr>
 
 <p>:::Output:::</p>
 <p>
 	<center>
-		<a href="http://vsvarun.github.io/ConnectionPoolHeatMapChart/cpExample.html" target="_blank">(ConnectionPoolHeatMapChart) -> Open In New Tab</a>
-		<iframe src="cpExample.html" border="0" height="750px" width="100%"></iframe>
-		<a href="http://vsvarun.github.io/ConnectionPoolHeatMapChart/cpBootStrapExample.html" target="_blank">(ConnectionPoolHeatMapChart with BootStrap) -> Open In New Tab</a>
-		<iframe src="cpBootStrapExample.html" border="0" height="750px" width="100%"></iframe>
+		<img src="./CPHeatMapChart.JPG?raw=true"/>
 	</center>
 </p>
+<hr>
 
-
+<p>:::Demo:::</p>
+<p>
+	<center>
+		<a href="./cpExample.html" target="_blank">(ConnectionPoolHeatMapChart) -> Open In New Tab</a>
+		<br>
+		<a href="./cpBootStrapExample.html" target="_blank">(ConnectionPoolHeatMapChart with BootStrap) -> Open In New Tab</a>
+	</center>
+</p>
+<hr>
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/VsVarun/ConnectionPoolHeatMapChart">Connection Pool Heat Map Chart</a> is maintained by <a href="https://github.com/VsVarun">VsVarun</a>.</span>
       </footer>
