@@ -99,25 +99,25 @@ function animate(data){
 	if(data.activeConnections>0){
 		setInterval(function(){
 			$(".cp-animated-active").effect( "pulsate", {times:3}, 3000 );
-		},4000);
+		},8000);
 	}
 	if(data.idleConnections>0){
 		$(".cp-animated-idle").effect( "pulsate", {times:2}, 3200 );
 		setInterval(function(){
 			$(".cp-animated-idle").effect( "pulsate", {times:2}, 3200 );
-		},4000);
+		},8000);
 	}
 	if(data.waitingConnections>0){
 		$(".cp-animated-waiting").effect( "pulsate", {times:2}, 3500 );
 		setInterval(function(){
 			$(".cp-animated-waiting").effect( "pulsate", {times:2}, 3500 );
-		},4000);
+		},8000);
 	}
 	if(data.openConnections>0){
 		$(".cp-animated-open").effect( "pulsate", {times:2}, 3500 );
 		setInterval(function(){
 			$(".cp-animated-open").effect( "pulsate", {times:2}, 3500 );
-		},4000);
+		},8000);
 	}
 }
 
