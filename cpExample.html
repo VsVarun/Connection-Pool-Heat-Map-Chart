@@ -7,9 +7,31 @@
 	</head>
 	<body>
 		<center><b>Connection Pool Status Heat Map without BootStrap Theme</b></center>
+		<hr>
+		<div id="ConnectionPoolHeatMapAnimated"></div>
+		<center><b>Animated</b></center>
+		<hr>
+		<br>
 		<div id="ConnectionPoolHeatMap"></div>
+		<center><b>Animation Disabled</b></center>
+		<hr>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
         <script type="text/javascript" src="./ConnectionPoolHeatMapChart/cp.js"></script>
+		<script type="text/javascript">
+			// Sample data
+			var connectionPoolStatus = {
+				name: 'com.zaxxer.hikari:type=Pool (HikariCP)',
+				totalConnections: 500,
+				activeConnections: 370,
+				idleConnections: 50,
+				waitingConnections: 10
+			};
+
+			// Invoking Animated Heap Map
+			connectionPoolHeatMap('#ConnectionPoolHeatMapAnimated', connectionPoolStatus, true);
+			// Invoking Heap Map disabling animation
+			connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, false);
+		</script>
 	</body>
 </html>
