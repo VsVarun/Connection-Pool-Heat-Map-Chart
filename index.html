@@ -22,10 +22,26 @@
     </section>
 
     <section class="main-content">
-      <p>
+<p>
 Animated Heat Map Chart for Connection Pool.<br>
 The Chart will let the user to visualize the connections pool usage status.<br>
-This is simplied by directly accepting a Connection Pool Status object.  </p>
+This is simplied by directly accepting a Connection Pool Status object.<br>
+
+<pre><code>In an Actual Scenario
+   When threads awaiting connections, there will not be any Idle or Open connections.
+   
+Total Number of connections visualized is computed as follows
+
+    SuperTotal = Total(Active + Idle + Open) + Waiting
+
+Active  - Connections acquired/held by Thread or connections in Use or Connections in Transaction
+Idle    - Connections Opened but Idle
+Open    - Free/Available Connection Slot
+Total   - Total allocated Connections in the Connection Pool
+Waiting - Threads Awaiting to accquire a Connection from the Connection Pool
+</code></pre>
+
+</p>
 <hr>
 
 <p>:::Html:::</p>
