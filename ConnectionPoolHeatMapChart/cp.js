@@ -2,23 +2,10 @@
  * Author : Varun Chandresekar
  */
  
-// Sample data
-var connectionPoolStatus = {
-	name: 'com.zaxxer.hikari:type=Pool (HikariCP)',
-	totalConnections: 500,
-	activeConnections: 370,
-	idleConnections: 50,
-	waitingConnections: 10
-};
-
-// To invoke
-connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus);
-connectionPoolHeatMap('#ConnectionPoolHeatMap1', connectionPoolStatus);
-
 /*
  * Pass the HeatMapElementName{div name}, ConnectionPoolStatus object
  */
-function connectionPoolHeatMap(heatMapElementName,data){
+function connectionPoolHeatMap(heatMapElementName,data, animateFlag){
   var rows=0,columns=0;
   var superTotalConnections = (data.totalConnections+data.waitingConnections);
   if(superTotalConnections >= 500){
@@ -74,25 +61,26 @@ function connectionPoolHeatMap(heatMapElementName,data){
   legendTbl = legendTbl.concat('<tr><td colspan="4">').concat(connectionPoolStatus.name).concat('</td></tr>');
   legendTbl = legendTbl.concat('</table>');
   $(heatMapElementName).append(legendTbl);
-  
-  animate(data);
-};
+  if(animateFlag){
+	animate(data);
+  }
+}
 
 /**
  * Animate the cp td classes
  */
 function animate(data){
 	if(data.activeConnections>0){
-		$(".cp-active").effect( "pulsate", {times:1}, 1000 );
+		$(".cp-active").effect( "pulsate", {times:1}, 3000 );
 	}
 	if(data.idleConnections>0){
-		$(".cp-idle").effect( "pulsate", {times:1}, 1200 );
+		$(".cp-idle").effect( "pulsate", {times:1}, 3200 );
 	}
 	if(data.waitingConnections>0){
-		$(".cp-waiting").effect( "pulsate", {times:1}, 1500 );
+		$(".cp-waiting").effect( "pulsate", {times:1}, 3500 );
 	}
 	if(data.openConnections>0){
-		$(".cp-open").effect( "pulsate", {times:1}, 1700 );
+		$(".cp-open").effect( "pulsate", {times:1}, 3700 );
 	}
 }
 
