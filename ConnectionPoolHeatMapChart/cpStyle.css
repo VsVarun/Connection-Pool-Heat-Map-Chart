@@ -1,25 +1,65 @@
 /*
  * Author : Varun Chandresekar
  */
+ 
+ /* Table Styles */
 table{background:#2F323C;border:2px solid #2F323C;min-width:450px;}
 table td{padding:5px;border:1px solid #2F323C;width:0.1%;text-align:center;font-weight:bold;}
+
+.legendTable{
+	border:0px solid #2F323C;
+	background:#2F323C;
+	min-width:auto;
+}
+.legendTableTD{
+	padding:0px;
+	border:1px solid #2F323C;
+	text-align:center;
+	font-weight:bold;
+	font-size:95%;
+}
+/* Box Styles */
 .cp-active,.cp-legend-active,.cp-animated-active{
-  background:#5FFF00;
- color: black;
+	background:#5FFF00;
+	color: black;
+	fill: #5FFF00;
 }
 .cp-idle,.cp-legend-idle,.cp-animated-idle{
-  background:#FFAB00;
- color: black;
+	background:#FFAB00;
+	color: black;
+	fill: #FFAB00;
 }
 .cp-waiting,.cp-legend-waiting,.cp-animated-waiting{
-  background:#FC1200;
- color: black;
+	background:#FC1200;
+	color: black;
+	fill: #FC1200;
 }
 .cp-open,.cp-legend-open,.cp-animated-open{
- background:white;
- color: black;
+	background:white;
+	color: black;
+	fill: white;
 } 
 .cp-legend-name{
 	background:#2F323C;
 	color: #D5DFCF;
+	fill: #2F323C;
+	font-size:100%;
 }
+
+.layout,.cpHeatMapChartSVG{
+  fill:#2F323C;
+  background:#2F323C;
+  stroke:#2F323C;
+  opacity:1;
+}
+.rect{
+  stroke:#2F323C;
+  stroke-width:2;
+  opacity:1;
+}
+.rect-legend{
+  stroke:#2F323C;
+  stroke-width:3;
+  opacity:1;
+}
+

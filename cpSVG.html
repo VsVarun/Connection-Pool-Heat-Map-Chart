@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="./ConnectionPoolHeatMapChart/cpStyle.css"/>
+	</head>
+	<body>
+		<div id="ConnectionPoolHeatMapAnimated"></div>
+		<div id="ConnectionPoolHeatMap"></div>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="./ConnectionPoolHeatMapChart/cp.js"></script>
+		<script type="text/javascript">
+			// Sample data
+			var connectionPoolStatus = {
+				Name: 'com.zaxxer.hikari:type=Pool (HikariCP)',
+				Total: 500,
+				Active: 370,
+				Idle: 50,
+				Waiting: 10
+			};
+
+			// Invoking Heap Map
+			connectionPoolHeatMap('#ConnectionPoolHeatMapAnimated', connectionPoolStatus,'SVG', true, 4);
+			connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus,'SVG', false, 4);
+		</script>
+	</body>
+</html>
