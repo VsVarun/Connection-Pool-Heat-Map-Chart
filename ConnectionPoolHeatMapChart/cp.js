@@ -12,9 +12,13 @@ var connectionPoolStatus = {
 };
 */
 /*
- * Pass the HeatMapElementName{div name}, ConnectionPoolStatus object
+ * Pass the HeatMapElementName{div name}, ConnectionPoolStatus, renderType, animateFlag object
+ * HeatMapElementName{div name}
+ * ConnectionPoolStatus = { Name: 'Sample', Total: 500, Active: 370, Idle: 50, Waiting: 10 }
+ * renderType = [ TABLE or SVG or SnapSVG or CANVAS ]
+ * animateFlag = [ true or false ]
  */
-function connectionPoolHeatMap(heatMapElementName,data, animateFlag){
+function connectionPoolHeatMap(heatMapElementName, data, renderType, animateFlag, boxSize){
   var rows=0,columns=0;
   var superTotal = (data.Total+data.Waiting);
   if(superTotal >= 500){
@@ -66,29 +70,74 @@ function connectionPoolHeatMap(heatMapElementName,data, animateFlag){
 	  }
   }
   connectionPoolArray = shuffleArray(connectionPoolArray);
+  $(heatMapElementName).hide();
   $(heatMapElementName).innerHtml='';
-  $(heatMapElementName).append('<table></table>');
-  var table = $(heatMapElementName).children();
-  var tableData = "";
-  for(i=0;i<rows;i++){
-	  tableData = tableData.concat("<tr>");
-	  for(j=0;j<columns;j++){
-		tableData = tableData.concat("<td class='").concat(connectionPoolArray.pop()).concat("'></td>");
+  if(renderType == 'TABLE'){
+	  $(heatMapElementName).append('<table></table>');
+	  var table = $(heatMapElementName).children();
+	  var tableData = "";
+	  for(i=0;i<rows;i++){
+		  tableData = tableData.concat("<tr>");
+		  for(j=0;j<columns;j++){
+			tableData = tableData.concat("<td class='").concat(connectionPoolArray.pop()).concat("'></td>");
+		  }
+		  tableData = tableData.concat("</tr>");
 	  }
-	  tableData = tableData.concat("</tr>");
+	  table.append(tableData);
+  }else if(renderType == 'SVG'){
+	  var boxSize = (boxSize == undefined)?2:boxSize;
+	  var defaultSize = boxSize * 5;
+	  var svgHeight = (rows * defaultSize)-(defaultSize*5);
+	  var svgWidth = (columns * defaultSize)-(defaultSize*5);
+	  var svgData = '<svg class="cpHeatMapChartSVG" width="'+svgWidth+'" height="'+svgHeight+'">';
+	  svgData = svgData.concat('<rect x="0"    y="0"  class="layout" />');	  
+	  
+	  var heatMapData = "";
+	  for(i=0;i<rows;i++){
+		  var yaxis = (i*defaultSize);
+		  for(j=0;j<columns;j++){
+			 var xaxis = (j*defaultSize);
+			 svgData = svgData.concat('<rect x="'+xaxis+'"   y="'+yaxis+'" width="'+defaultSize+'" height="'+defaultSize+'" class="rect '+connectionPoolArray.pop()+'"> ');
+			 svgData = svgData.concat('</rect>');
+		  }
+	  }
+	  svgData = svgData.concat('</svg>');
+	  $(heatMapElementName).append(svgData);
+  }else if(renderType == 'SnapSVG'){
+	  var svgName = heatMapElementName.substring(1, heatMapElementName.length).concat("_svg");
+	  var boxSize = (boxSize == undefined)?2:boxSize;
+	  var defaultSize = boxSize * 5;
+	  var svgHeight = (rows * defaultSize)-(defaultSize*5);
+	  var svgWidth = (columns * defaultSize)-(defaultSize*5);
+	  $(heatMapElementName).append('<svg id="'+svgName+'" width="'+svgWidth+'" height="'+svgHeight+'" class="layout"></svg>');
+	  
+	  var s = Snap('#'+svgName);
+	  var yAxis = undefined;
+	  var xAxis = undefined;
+	  for(i=0;i<rows;i++){
+		  yAxis = (i*defaultSize);
+		  for(j=0;j<columns;j++){
+			 xAxis = (j*defaultSize);
+			 s.rect(xAxis,yAxis,defaultSize,defaultSize).attr("class","rect "+connectionPoolArray.pop());
+		  }
+	  }
+  }else if(renderType == 'CANVAS'){
   }
-  table.append(tableData);
-  var legendTbl = '<table><tr>'
-  legendTbl = legendTbl.concat('<td class="cp-legend-active">Active ( ').concat(data.Active).concat(' )</td>');
-  legendTbl = legendTbl.concat('<td class="cp-legend-idle">Idle ( ').concat(data.Idle).concat(' )</td>');
-  legendTbl = legendTbl.concat('<td class="cp-legend-waiting">Waiting ( ').concat(data.Waiting).concat(' )</td>');
-  legendTbl = legendTbl.concat('<td class="cp-legend-open">Open ( ').concat(data.Open).concat(' )</td></tr>');
-  legendTbl = legendTbl.concat('<tr><td colspan="4" class="cp-legend-name">').concat(connectionPoolStatus.Name).concat('</td></tr>');
-  legendTbl = legendTbl.concat('</table>');
-  $(heatMapElementName).append(legendTbl);
+  
+  // Legends
+  var legendTbl = '<table width="'+svgWidth+'px" class="legendTable"><tr>'
+	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-active">Active ( ').concat(data.Active).concat(' )</td>');
+	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-idle">Idle ( ').concat(data.Idle).concat(' )</td>');
+	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-waiting">Waiting ( ').concat(data.Waiting).concat(' )</td>');
+	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-open">Open ( ').concat(data.Open).concat(' )</td></tr>');
+	  legendTbl = legendTbl.concat('<tr><td colspan="4" class="legendTableTD cp-legend-name">').concat(connectionPoolStatus.Name).concat('</td></tr>');
+	  legendTbl = legendTbl.concat('</table>');
+	  $(heatMapElementName).append(legendTbl);
+  $(heatMapElementName).show();
   if(animateFlag){
 	animate(data);
   }
+  
 }
 
 /**
