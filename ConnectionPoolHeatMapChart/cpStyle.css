@@ -19,7 +19,7 @@ table td{padding:5px;border:1px solid #2F323C;width:0.1%;text-align:center;font-
 	font-size:95%;
 }
 /* Box Styles */
-.cp-active,.cp-legend-active,.cp-animated-active{
+.cp-open,.cp-legend-open,.cp-animated-open{
 	background:#5FFF00;
 	color: black;
 	fill: #5FFF00;
@@ -29,15 +29,15 @@ table td{padding:5px;border:1px solid #2F323C;width:0.1%;text-align:center;font-
 	color: black;
 	fill: #FFAB00;
 }
-.cp-waiting,.cp-legend-waiting,.cp-animated-waiting{
+.cp-active,.cp-legend-active,.cp-animated-active{
 	background:#FC1200;
 	color: black;
 	fill: #FC1200;
 }
-.cp-open,.cp-legend-open,.cp-animated-open{
-	background:white;
+.cp-waiting,.cp-legend-waiting,.cp-animated-waiting{
+	background:blue;
 	color: black;
-	fill: white;
+	fill: blue;
 } 
 .cp-legend-name{
 	background:#2F323C;

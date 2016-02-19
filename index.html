@@ -86,17 +86,18 @@ var connectionPoolStatus = {
 
 // To invoke
 // Syntax
-connectionPoolHeatMap(heatMapElementName, data, renderType, animateFlag, boxSize);
+connectionPoolHeatMap(heatMapElementName, data, shufle, renderType, animateFlag, boxSize);
 
 // Aguments
 HeatMapElementName   = '#div id'
 ConnectionPoolStatus = { Name: 'Sample', Total: 500, Active: 370, Idle: 50, Waiting: 10 }
+shuffle              = [ true or false ]
 renderType           = [ TABLE or SVG or SnapSVG or CANVAS ]
 animateFlag          = [ true or false ]
 boxSize              = [ 1 - 10 ]
 
 // Example 
-connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, 'SnapSVG', true, 4);
+connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true, 'SnapSVG', true, 4);
 </code></pre>
 <hr>
 
@@ -138,8 +139,8 @@ connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, 'SnapSVG',
 			Waiting: 10
 		};
 		// Invoking Heap Map disabling animation
-		connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus,'SnapSVG', false,4);
-		connectionPoolHeatMap('#ConnectionPoolHeatMapTitle', connectionPoolStatus,'SnapSVG', true,4);
+		connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, false, 'SnapSVG', false,4);
+		connectionPoolHeatMap('#ConnectionPoolHeatMapTitle', connectionPoolStatus, true, 'SnapSVG', true,4);
 	</script>
   </body>
 </html>
