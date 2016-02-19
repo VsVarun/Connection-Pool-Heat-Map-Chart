@@ -13,19 +13,41 @@
   <body>
     <section class="page-header">
       <h1 class="project-name">Connection Pool Heat Map Chart</h1>
+	  <br><center><div id="ConnectionPoolHeatMapTitle"></div></center><br>
       <h2 class="project-tagline">Heat Map Chart to Visualize Connection Pool Usage</h2>
       <a href="https://github.com/VsVarun/ConnectionPoolHeatMapChart" class="btn">View on GitHub</a>
       <a href="https://github.com/VsVarun/ConnectionPoolHeatMapChart/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/VsVarun/ConnectionPoolHeatMapChart/tarball/master" class="btn">Download .tar.gz</a>
+	  <br>
 	  <a href="./cpExample.html" target="_blank" class="btn">Demo Native theme</a>
 	  <a href="./cpBootStrapExample.html" target="_blank" class="btn">Demo Bootstrap theme</a>
+	  <a href="./cpSnapSVG.html" target="_blank" class="btn">Demo SnapSVG</a>
+	  <a href="./cpSVG.html" target="_blank" class="btn">Demo SVG</a>
+	  
+	  
     </section>
 
     <section class="main-content">
-      <p>
+<p>
 Animated Heat Map Chart for Connection Pool.<br>
 The Chart will let the user to visualize the connections pool usage status.<br>
-This is simplied by directly accepting a Connection Pool Status object.  </p>
+This is simplied by directly accepting a Connection Pool Status object.<br>
+
+<pre><code>In an Actual Scenario
+   When threads awaiting connections, there will not be any Idle or Open connections.
+   
+Total Number of connections visualized is computed as follows
+
+    SuperTotal = Total(Active + Idle + Open) + Waiting
+
+Active  - Connections acquired/held by Thread or connections in Use or Connections in Transaction
+Idle    - Connections Opened but Idle
+Open    - Free/Available Connection Slot
+Total   - Total allocated Connections in the Connection Pool
+Waiting - Threads Awaiting to accquire a Connection from the Connection Pool
+</code></pre>
+
+</p>
 <hr>
 
 <p>:::Html:::</p>
@@ -41,6 +63,9 @@ This is simplied by directly accepting a Connection Pool Status object.  </p>
 :::BootStrap Libraries(Optional):::
 &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"&gt; 
 &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"&gt; &lt;/script&gt; 
+
+:::Snap SVG Libraries(Optional):::
+&ltscript src="http://snapsvg.io/assets/js/snap.svg-min.js"&gt&lt/script&gt
 
 :::JS Libraries:::  
 &lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"&gt;&lt;/script&gt;
@@ -59,25 +84,37 @@ var connectionPoolStatus = {
     Waiting: 30
 };
 
-// To invoke with Animation
-connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true);
+// To invoke
+// Syntax
+connectionPoolHeatMap(heatMapElementName, data, renderType, animateFlag, boxSize);
 
-// To invoke without Animation
-connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true);
+// Aguments
+HeatMapElementName   = '#div id'
+ConnectionPoolStatus = { Name: 'Sample', Total: 500, Active: 370, Idle: 50, Waiting: 10 }
+renderType           = [ TABLE or SVG or SnapSVG or CANVAS ]
+animateFlag          = [ true or false ]
+boxSize              = [ 1 - 10 ]
+
+// Example 
+connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, 'SnapSVG', true, 4);
 </code></pre>
 <hr>
 
 <p>:::Output:::</p>
 <p>
-	<h3>Connection Pool Heat Map - Animation Disabled [ Native Theme ]</h3>
+	<center>
+	<h3>Connection Pool Heat Map - Animation Disabled [ SnapSVG ]</h3>
 	<div id="ConnectionPoolHeatMap"></div>
+	</center>
 </p>
 <hr>
 
 <p>:::Demo:::</p>
 <pre>
-	<a href="./cpExample.html" target="_blank">ConnectionPoolHeatMapChart [ Native Theme ]    -> Open In New Tab</a>
-	<a href="./cpBootStrapExample.html" target="_blank">ConnectionPoolHeatMapChart [ BootStrap Theme ] -> Open In New Tab</a>
+	<a href="./cpExample.html" target="_blank">ConnectionPoolHeatMapChart [ renderType="TABLE" Native Theme ]    -> Open In New Tab</a>
+	<a href="./cpBootStrapExample.html" target="_blank">ConnectionPoolHeatMapChart [ renderType="TABLE" BootStrap Theme ] -> Open In New Tab</a>
+	<a href="./cpSVG.html" target="_blank">ConnectionPoolHeatMapChart [ renderType="SVG" ]                   -> Open In New Tab</a>
+	<a href="./cpSnapSVG.html" target="_blank">ConnectionPoolHeatMapChart [ renderType="SnapSVG" ]               -> Open In New Tab</a>
 </pre>
 <hr>
       <footer class="site-footer">
@@ -89,6 +126,7 @@ connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true);
 	<!-- Latest compiled and minified JavaScript -->
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+	<script src="http://snapsvg.io/assets/js/snap.svg-min.js"></script>
 	<script type="text/javascript" src="./ConnectionPoolHeatMapChart/cp.js"></script><script type="text/javascript" src="./ConnectionPoolHeatMapChart/cp.js"></script>
 	<script type="text/javascript">
 		// Sample data
@@ -100,7 +138,8 @@ connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true);
 			Waiting: 10
 		};
 		// Invoking Heap Map disabling animation
-		connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, false);
+		connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus,'SnapSVG', false,4);
+		connectionPoolHeatMap('#ConnectionPoolHeatMapTitle', connectionPoolStatus,'SnapSVG', true,4);
 	</script>
   </body>
 </html>

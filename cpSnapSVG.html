@@ -4,10 +4,11 @@
 		<link rel="stylesheet" href="./ConnectionPoolHeatMapChart/cpStyle.css"/>
 	</head>
 	<body>
+		<div id="ConnectionPoolHeatMapAnimated"></div>
 		<div id="ConnectionPoolHeatMap"></div>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-		<script src="./snap.svg/snap.svg.js"></script>
+		<script src="http://snapsvg.io/assets/js/snap.svg-min.js"></script>
 		<script type="text/javascript" src="./ConnectionPoolHeatMapChart/cp.js"></script>
 		<script type="text/javascript">
 			// Sample data
@@ -19,8 +20,9 @@
 				Waiting: 10
 			};
 
-			// Invoking Animated Heap Map
-			connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus,'SnapSVG', true, 4);
+			// Invoking Heap Map
+			connectionPoolHeatMap('#ConnectionPoolHeatMapAnimated', connectionPoolStatus,'SnapSVG', true, 4);
+			connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus,'SnapSVG', false, 4);
 		</script>
 	</body>
 </html>
