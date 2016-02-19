@@ -16,6 +16,9 @@ This is very simplied by directly accepting a Connection Pool Status object.<br>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"> </script> 
 
+:::Snap SVG Libraries(Optional):::
+<script src="http://snapsvg.io/assets/js/snap.svg-min.js"></script>
+
 :::JS Libraries:::  
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
@@ -32,11 +35,19 @@ var connectionPoolStatus = {
 	Waiting: 30
 };
 
-// To invoke with Animation
-connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, true);
+// To invoke
+// Syntax
+connectionPoolHeatMap(heatMapElementName, data, renderType, animateFlag, boxSize);
 
-// To invoke without Animation
-connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, false);
+// Aguments
+HeatMapElementName   = '#div id'
+ConnectionPoolStatus = { Name: 'Sample', Total: 500, Active: 370, Idle: 50, Waiting: 10 }
+renderType           = [ TABLE or SVG or SnapSVG or CANVAS ]
+animateFlag          = [ true or false ]
+boxSize              = [ 1 - 10 ]
+
+// Example 
+connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, 'SnapSVG', true, 4);
 ```
 <br><b>:::Output:::</b>
 <p align="center">
