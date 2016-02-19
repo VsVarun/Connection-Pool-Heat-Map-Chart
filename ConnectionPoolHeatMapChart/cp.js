@@ -133,7 +133,7 @@ function connectionPoolHeatMap(heatMapElementName, data, shuffle, renderType, an
 	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-waiting">Waiting ( ').concat(data.Waiting).concat(' )</td>');
 	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-idle">Idle ( ').concat(data.Idle).concat(' )</td>');
 	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-open">Open ( ').concat(data.Open).concat(' )</td></tr>');
-	  legendTbl = legendTbl.concat('<tr><td colspan="4" class="legendTableTD cp-legend-name">').concat(connectionPoolStatus.Name).concat('</td></tr>');
+	  legendTbl = legendTbl.concat('<tr><td colspan="4" class="legendTableTD cp-legend-name">').concat(data.Name).concat('</td></tr>');
 	  legendTbl = legendTbl.concat('</table>');
 	  $(heatMapElementName).append(legendTbl);
   $(heatMapElementName).show();
