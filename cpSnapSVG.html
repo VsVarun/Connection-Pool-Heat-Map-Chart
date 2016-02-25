@@ -14,15 +14,15 @@
 			// Sample data
 			var connectionPoolStatus = {
 				Name: 'com.zaxxer.hikari:type=Pool (HikariCP)',
-				Total: 500,
-				Active: 370,
-				Idle: 50,
-				Waiting: 10
+				Total: 59,
+				Active: 20,
+				Idle: 1,
+				Waiting: 0
 			};
 
 			// Invoking Heap Map
-			connectionPoolHeatMap('#ConnectionPoolHeatMapAnimated', connectionPoolStatus, true,'SnapSVG', true, 4);
-			connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, false, 'SnapSVG', false, 4);
+			connectionPoolHeatMap('#ConnectionPoolHeatMapAnimated', connectionPoolStatus, true,'SnapSVG', true, 10);
+			connectionPoolHeatMap('#ConnectionPoolHeatMap', connectionPoolStatus, false, 'SnapSVG', true, 10);
 		</script>
 	</body>
 </html>

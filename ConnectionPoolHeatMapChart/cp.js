@@ -27,8 +27,14 @@ function connectionPoolHeatMap(heatMapElementName, data, shuffle, renderType, an
   }else if(superTotal >= 250){
 	  columns = 25;
 	  rows = superTotal/columns;
+  }else if(superTotal >= 150){
+	  columns = 15;
+	  rows = superTotal/columns;
+  }else if(superTotal >= 50){
+	  columns = 10;
+	  rows = superTotal/columns;
   }else{
-	  columns = 20;
+	  columns = 7;
 	  rows = superTotal/columns;
   }
   
@@ -74,6 +80,7 @@ function connectionPoolHeatMap(heatMapElementName, data, shuffle, renderType, an
 	connectionPoolArray = shuffleArray(connectionPoolArray);
   }
   $(heatMapElementName).hide();
+  $(heatMapElementName).empty();
   $(heatMapElementName).innerHtml='';
   if(renderType == 'TABLE'){
 	  $(heatMapElementName).append('<table></table>');
@@ -129,11 +136,19 @@ function connectionPoolHeatMap(heatMapElementName, data, shuffle, renderType, an
   
   // Legends
   var legendTbl = '<table width="'+svgWidth+'px" class="legendTable"><tr>'
+	if(data.Active > 0){
 	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-active">Active ( ').concat(data.Active).concat(' )</td>');
+	}
+	if(data.Waiting > 0){
 	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-waiting">Waiting ( ').concat(data.Waiting).concat(' )</td>');
+	}
+	if(data.Idle > 0){
 	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-idle">Idle ( ').concat(data.Idle).concat(' )</td>');
-	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-open">Open ( ').concat(data.Open).concat(' )</td></tr>');
-	  legendTbl = legendTbl.concat('<tr><td colspan="4" class="legendTableTD cp-legend-name">').concat(data.Name).concat('</td></tr>');
+	}
+	if(data.Open > 0){
+	  legendTbl = legendTbl.concat('<td class="legendTableTD cp-legend-open">Open ( ').concat(data.Open).concat(' )</td>');
+	}
+	  legendTbl = legendTbl.concat('</tr><tr><td colspan="4" class="legendTableTD cp-legend-name">').concat(data.Name).concat('</td></tr>');
 	  legendTbl = legendTbl.concat('</table>');
 	  $(heatMapElementName).append(legendTbl);
   $(heatMapElementName).show();
