@@ -30,11 +30,8 @@ function connectionPoolHeatMap(heatMapElementName, data, shuffle, renderType, an
   }else if(superTotal >= 150){
 	  columns = 15;
 	  rows = superTotal/columns;
-  }else if(superTotal >= 50){
-	  columns = 10;
-	  rows = superTotal/columns;
   }else{
-	  columns = 7;
+	  columns = 10;
 	  rows = superTotal/columns;
   }
   
