@@ -1,7 +1,7 @@
 # ConnectionPoolHeatMapChart
 Heat Map Chart for Connection Pool.<br>
 This Chart will let the user to visualize how much of the connections are beings used.<br>
-The Chart plays animations when it loads. Here is a <a href="http://vsvarun.github.io/ConnectionPoolHeatMapChart/">Sample demo</a>.<br>
+The Chart plays animations when it loads. Here is a <a href="http://vsvarun.github.io/Connection-Pool-Heat-Map-Chart/">Sample demo</a>.<br>
 This is very simplied by directly accepting a Connection Pool Status object.<br>
 <br><b>:::Html:::</b>
 ```
